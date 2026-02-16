@@ -1,5 +1,6 @@
 package controller;
-
+import org.junit.jupiter.api.AfterEach;
+import org.mockito.MockedStatic;
 import dao.TaskDao;
 import model.Task;
 import model.User;
@@ -43,7 +44,7 @@ class AddTaskControllerTest {
 
     @InjectMocks
     private AddTaskController addTaskController;
-
+    private MockedStatic<LanguageManager> languageMock;
     private TextField titleField;
     private TextArea descField;
     private DatePicker dueDatePicker;
@@ -62,8 +63,9 @@ class AddTaskControllerTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        mockStatic(LanguageManager.class);
-        when(LanguageManager.getTranslation(anyString())).thenReturn("test string");
+        languageMock = mockStatic(LanguageManager.class);
+        languageMock.when(() -> LanguageManager.getTranslation(anyString()))
+                .thenReturn("test string");
 
 
         User dummyUser = new User("testuser", "password");
@@ -111,6 +113,10 @@ class AddTaskControllerTest {
         Task savedTask = taskCaptor.getValue();
         assertEquals("New Test Task", savedTask.getTitle());
     }
+    @AfterEach
+    void tearDown() {
+        languageMock.close();
+    }
 
     private void setPrivateField(Object target, String fieldName, Object value) throws Exception {
         Field field = target.getClass().getDeclaredField(fieldName);
@@ -123,4 +129,5 @@ class AddTaskControllerTest {
         method.setAccessible(true);
         method.invoke(target, args);
     }
+
 }
