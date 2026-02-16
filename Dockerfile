@@ -19,10 +19,5 @@ COPY target/studyplanner.jar app.jar
 ENV DISPLAY=host.docker.internal:0.0
 ENV DB_HOST=host.docker.internal
 # Run JavaFX app
-CMD ["java",
-     "-Dprism.order=sw",
-     "-Dprism.verbose=true",
-     "--module-path", "/javafx-sdk/lib",
-     "--add-modules", "javafx.controls,javafx.fxml",
-     "-jar", "app.jar"]
+CMD ["java", "--module-path", "/javafx-sdk/lib", "--add-modules", "javafx.controls,javafx.fxml", "-jar", "app.jar"]
 
