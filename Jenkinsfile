@@ -51,8 +51,7 @@ pipeline {
 
         stage('Unit Tests') {
             steps {
-                 script { runCommand('mvn test -Dtest=model.*
-') }
+                 runCommand("mvn test -Dtest=model.* -Dsurefire.failIfNoSpecifiedTests=false")
             }
         }
 
