@@ -16,7 +16,6 @@
         <sonar.projectKey>sep01-project</sonar.projectKey>
         <sonar.host.url>http://localhost:9000</sonar.host.url>
 
-
     </properties>
 
     <build>
