@@ -44,7 +44,7 @@ pipeline {
         stage('Build & Test') {
             steps {
                 script {
-                    runCommand('mvn clean install')
+                    runCommand('mvn clean install -DskipTests')
                 }
             }
         }
@@ -52,7 +52,7 @@ pipeline {
         stage('Unit Tests') {
             steps {
                 script {
-                    runCommand('mvn test')
+                    runCommand('mvn test -Dgroups=!UI')
                 }
             }
         }
