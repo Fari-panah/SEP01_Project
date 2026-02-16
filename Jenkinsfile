@@ -51,7 +51,8 @@ pipeline {
 
         stage('Unit Tests') {
             steps {
-                 script { runCommand('mvn -Dtest=model.* test') }
+                 script { runCommand('mvn test -Dtest=model.*
+') }
             }
         }
 
