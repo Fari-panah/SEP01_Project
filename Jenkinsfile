@@ -63,8 +63,8 @@ pipeline {
                             if (isUnix()) {
                                 sh """
                                     ${tool 'SonarScanner'}/bin/sonar-scanner \
-                                    -Dsonar.projectKey=sep01-project \
-                                    -Dsonar.projectName=SEP01-Project \
+                                    -Dsonar.projectKey=SEP01_Project \
+                                    -Dsonar.projectName=SEP01_Project \
                                     -Dsonar.sources=src \
                                     -Dsonar.java.binaries=target/classes \
                                     -Dsonar.token=$SONAR_TOKEN
@@ -72,8 +72,8 @@ pipeline {
                             } else {
                                 bat """
                                     ${tool 'SonarScanner'}\\bin\\sonar-scanner ^
-                                    -Dsonar.projectKey=sep01-project ^
-                                    -Dsonar.projectName=SEP01-Project ^
+                                    -Dsonar.projectKey=SEP01_Project ^
+                                    -Dsonar.projectName=SEP01_Project ^
                                     -Dsonar.sources=src ^
                                     -Dsonar.java.binaries=target/classes ^
                                     -Dsonar.token=%SONAR_TOKEN%
