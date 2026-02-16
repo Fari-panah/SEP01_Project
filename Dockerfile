@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
 
 # Download and unzip JavaFX Linux SDK
 RUN mkdir -p /javafx-sdk \
-    && wget -O javafx.zip https://download2.gluonhq.com/openjfx/17.0.14/openjfx-17.0.14_linux-x64_bin-sdk.zip\
+    && wget -O javafx.zip https://download2.gluonhq.com/openjfx/21.0.2/openjfx-21.0.2_linux-x64_bin-sdk.zip\
     && unzip javafx.zip -d /javafx-sdk \
     && mv /javafx-sdk/javafx-sdk-21.0.2/lib /javafx-sdk/lib \
     && rm -rf /javafx-sdk/javafx-sdk-21.0.2 javafx.zip
