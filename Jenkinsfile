@@ -17,7 +17,6 @@ pipeline {
         DOCKERHUB_REPO = 'fari59/sep01-project'
         PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin:${env.PATH}"
     }
-
     tools {
         maven 'Maven3'
     }
