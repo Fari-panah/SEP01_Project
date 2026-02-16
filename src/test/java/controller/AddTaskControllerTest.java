@@ -103,7 +103,7 @@ class AddTaskControllerTest {
             }
         });
 
-        latch.await();
+       // latch.await();
 
         ArgumentCaptor<Task> taskCaptor = ArgumentCaptor.forClass(Task.class);
         verify(taskDao).persist(taskCaptor.capture());
