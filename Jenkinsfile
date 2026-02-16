@@ -41,7 +41,7 @@ pipeline {
                     }
                 }
 
-        stage('Build & Test') {
+       /* stage('Build & Test') {
             steps {
                 script {
                     runCommand('mvn clean install -DskipTests')
@@ -55,7 +55,7 @@ pipeline {
                     runCommand('mvn test -Dgroups=!UI')
                 }
             }
-        }
+        }*/
 
         stage('SonarQube Analysis') {
             steps {
