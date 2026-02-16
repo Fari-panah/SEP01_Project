@@ -9,7 +9,7 @@ import java.util.Map;
 
 import static org.mockito.Mockito.*;
 
-public class LocalizationDaoTest {
+ class LocalizationDaoTest {
 
     @Test
     void testGetLocalizedStrings_NoRealDB() throws Exception {
@@ -29,7 +29,6 @@ public class LocalizationDaoTest {
 
         LocalizationDao dao = new LocalizationDao();
         Map<String, String> result = dao.getLocalizedStrings(Locale.ENGLISH);
-
         assert result.isEmpty();
     }
 }
