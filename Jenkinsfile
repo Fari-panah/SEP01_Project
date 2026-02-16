@@ -8,7 +8,7 @@ pipeline {
     environment {
         DOCKER_IMAGE_NAME = 'fari59/sep01-project'
         DOCKER_IMAGE_TAG  = 'latest'
-        DOCKER_CREDENTIALS_ID = 'docker_hub'
+        DOCKER_CREDENTIALS_ID = 'docker-hub'
     }
 
     stages {
@@ -65,7 +65,7 @@ pipeline {
             steps {
                 withCredentials([
                     usernamePassword(
-                        credentialsId: 'docker_hub',
+                        credentialsId: 'docker-hub',
                         usernameVariable: 'DOCKER_USER',
                         passwordVariable: 'DOCKER_PASS'
                     )
