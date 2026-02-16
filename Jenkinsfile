@@ -11,21 +11,23 @@ def runCommand(command) {
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE_NAME = 'michabl/sep01-project_new1'
-        DOCKER_CREDENTIALS_ID = 'Docker_Hub'
+        DOCKER_IMAGE_NAME = 'fari59/sep01-project'
+        DOCKER_CREDENTIALS_ID = 'docker_hub'
         DOCKER_IMAGE_TAG = 'latest'
-        PATH = "/usr/local/bin:${env.PATH}"
+        DOCKERHUB_REPO = 'fari59/sep01-project'
+        PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin:${env.PATH}"
     }
 
     tools {
-        maven 'Maven 3'
+        maven 'Maven3'
     }
 
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'miro-week7-1', url: 'https://github.com/Miro193/SEP01_Project.git'
+               // git branch: 'main', url: 'https://github.com/Miro193/SEP01_Project.git'
+               git branch: 'main', url: 'https://github.com/Fari-panah/SEP01_Project.git'
             }
         }
 
