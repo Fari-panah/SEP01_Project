@@ -40,6 +40,10 @@ public class LoginController extends BaseController {
     @FXML private AnchorPane rootAnchorPane;
 
 
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
     private UserDao userDao = new UserDao();
 
     /**

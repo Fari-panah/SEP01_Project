@@ -5,8 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.User;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,6 +13,7 @@ import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 import org.junit.jupiter.api.Test;
+
 import java.lang.reflect.Field;
 
 import static org.junit.jupiter.api.Assertions.*;

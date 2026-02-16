@@ -6,31 +6,31 @@ CREATE DATABASE StudyPlanner
 USE StudyPlanner;
 
 -- Users table
-    CREATE TABLE Users (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(100) NOT NULL,
-    password VARCHAR(100) NOT NULL,
-    confirmPassword VARCHAR(100) NOT NULL
+CREATE TABLE Users (
+                       id INT PRIMARY KEY AUTO_INCREMENT,
+                       username VARCHAR(100) NOT NULL,
+                       password VARCHAR(100) NOT NULL,
+                       confirmPassword VARCHAR(100) NOT NULL
 );
 
 -- Tasks assigned to users
 CREATE TABLE Task (
-    task_id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT NOT NULL,
-    title VARCHAR(100) NOT NULL,
-    description TEXT,
-    status VARCHAR(20),
-    dueDate DATETIME,
-    language VARCHAR(10) NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES Users(id)
+                      task_id INT PRIMARY KEY AUTO_INCREMENT,
+                      user_id INT NOT NULL,
+                      title VARCHAR(100) NOT NULL,
+                      description TEXT,
+                      status VARCHAR(20),
+                      dueDate DATETIME,
+                      language VARCHAR(10) NOT NULL,
+                      FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
 -- Stores interface text translations
 CREATE TABLE translations (
-    translation_id INT PRIMARY KEY AUTO_INCREMENT,
-    translation_key VARCHAR(100) NOT NULL,
-    translation_value VARCHAR(255) NOT NULL,
-    language VARCHAR(10) NOT NULL
+                              translation_id INT PRIMARY KEY AUTO_INCREMENT,
+                              translation_key VARCHAR(100) NOT NULL,
+                              translation_value VARCHAR(255) NOT NULL,
+                              language VARCHAR(10) NOT NULL
 );
 
 -- english
@@ -45,6 +45,7 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('itemEnglish', 'English', 'en'),
 ('itemChinese', 'Chinese', 'en'),
 ('itemPersian', 'Persian', 'en'),
+-- login errors and messages
 ('error.loginMessage', 'Username and Password cannot be empty', 'en'),
 ('success.loginMessage', 'Login successful! Welcome', 'en'),
 ('invalid.message', 'Invalid username or password', 'en'),
@@ -55,7 +56,7 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('lblConfirm', 'Confirm:', 'en'),
 ('btnCreateAccount', 'Create Account', 'en'),
 ('btnBackToLogin', 'Back to Login', 'en'),
-
+-- signup errors and messages
 ('error.title', 'Error', 'en'),
 ('error.fillAll', 'Please fill all fields!', 'en'),
 ('error.usernameExists', 'Username already exists!', 'en'),
@@ -75,6 +76,7 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('descColumn', 'Description', 'en'),
 ('dueDateColumn', 'Due Date', 'en'),
 ('statusColumn', 'Status', 'en'),
+-- taskList errors and messages
 ('error.noTaskMessage', 'No Task Selected', 'en'),
 ('error.editTaskMessage', 'Please select a task in the table to edit', 'en'),
 ('error.deleteMessage', 'Please select a task to delete', 'en'),
@@ -93,26 +95,31 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('lblStatus', 'Status:', 'en'),
 ('btnCancel', 'Cancel', 'en'),
 ('btnSave', 'Save', 'en'),
+-- No translate ERROR messages here yet
+
 -- calendar
 ('lblCalendarView', '7-Day Calendar View', 'en'),
 ('btnBackToTaskList', 'Back to Task List', 'en'),
-
 ('prompt.title', 'Task title', 'en'),
 ('prompt.description', 'Task description', 'en'),
-
 ('status.TODO', 'TODO', 'en'),
 ('status.IN_PROGRESS', 'IN_PROGRESS', 'en'),
 ('status.DONE', 'DONE', 'en'),
-
+-- calendar errors and messages
 ('error.validation', 'Title, Due Date, and Status are required fields.', 'en'),
 ('success.updated', 'Task has been updated successfully!', 'en'),
-
 ('window.taskList.title', 'Tasks', 'en'),
 -- done task
 ('backToList', 'Back To Tasks', 'en'),
-('lblDoneTask', 'Done Tasks', 'en');
+('lblDoneTask', 'Done Tasks', 'en'),
+-- sign out
+('btnSignOut','Sign Out','en'),
+-- sign out success message
+('confirm.title','Confirmation','en'),
+('confirm.signOut','Are you sure you want to sign out?','en'),
+('success.signOut','You have been signed out.','en');
 
--- finnish
+-- finnish translations
 INSERT INTO translations (translation_key, translation_value, language) VALUES
 -- login
 ('headerLogin', 'Kirjaudu sisään', 'fi'),
@@ -124,6 +131,7 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('itemEnglish', 'Englanti', 'fi'),
 ('itemChinese', 'Kiina', 'fi'),
 ('itemPersian', 'Persia', 'fi'),
+-- login errors and messages
 ('error.loginMessage', 'Käyttäjätunnus ja salasana eivät voi olla tyhjiä', 'fi'),
 ('success.loginMessage', 'Kirjautuminen onnistui! Tervetuloa', 'fi'),
 ('invalid.message', 'Virheellinen käyttäjätunnus tai salasana', 'fi'),
@@ -134,7 +142,7 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('lblConfirm', 'Vahvista:', 'fi'),
 ('btnCreateAccount', 'Luo tili', 'fi'),
 ('btnBackToLogin', 'Takaisin kirjautumiseen', 'fi'),
-
+-- signup errors and messages
 ('error.title', 'Virhe', 'fi'),
 ('error.fillAll', 'Täytä kaikki kentät!', 'fi'),
 ('error.usernameExists', 'Käyttäjätunnus on jo olemassa!', 'fi'),
@@ -154,18 +162,18 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('descColumn', 'Kuvaus', 'fi'),
 ('dueDateColumn', 'Eräpäivä', 'fi'),
 ('statusColumn', 'Tila', 'fi'),
+-- taskList errors and messages
 ('error.noTaskMessage', 'Tehtävää ei valittu', 'fi'),
 ('error.editTaskMessage', 'Valitse muokattava tehtävä taulukosta', 'fi'),
 ('error.deleteMessage', 'Valitse poistettava tehtävä', 'fi'),
 ('error.taskSelectMessage', 'Tehtävää ei valittu', 'fi'),
 ('success.taskAddMessage', 'Tehtävä lisätty onnistuneesti!', 'fi'),
-('success.editTitle', 'Success', 'en'),
-('success.taskEditMessage', 'Task has been updated successfully!', 'en'),
-
+('success.editTitle', 'Onnistui', 'en'),
+('success.taskEditMessage', 'Tehtävä on päivitetty onnistuneesti!', 'fi'),
 ('success.taskEditMessage', 'Tehtävä muokattu onnistuneesti!', 'fi'),
 -- add task
 ('lblAddTask', 'Lisää uusi tehtävä', 'fi'),
--- adit task
+-- edit task
 ('lblEditTask', 'Muokkaa tehtävää', 'fi'),
 ('lblTitle', 'Otsikko:', 'fi'),
 ('lblDescription', 'Kuvaus:', 'fi'),
@@ -173,24 +181,29 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('lblStatus', 'Tila:', 'fi'),
 ('btnCancel', 'Peruuta', 'fi'),
 ('btnSave', 'Tallenna', 'fi'),
+-- No translate ERROR messages here yet
+
 -- calendar
 ('lblCalendarView', '7 päivän kalenterinäkymä', 'fi'),
 ('btnBackToTaskList', 'Takaisin tehtävälistaan', 'fi'),
-
 ('prompt.title', 'Tehtävän otsikko', 'fi'),
 ('prompt.description', 'Tehtävän kuvaus', 'fi'),
-
 ('status.TODO', 'TEHTÄVÄ', 'fi'),
 ('status.IN_PROGRESS', 'KESKEN', 'fi'),
 ('status.DONE', 'VALMIS', 'fi'),
-
+-- calendar errors and messages
 ('error.validation', 'Otsikko, eräpäivä ja tila ovat pakollisia kenttiä.', 'fi'),
 ('success.updated', 'Tehtävä päivitetty onnistuneesti!', 'fi'),
-
 ('window.taskList.title', 'Tehtävät', 'fi'),
 -- done task
 ('backToList', 'Takaisin tehtäviin', 'fi'),
-('lblDoneTask', 'Valmiit tehtävät', 'fi');
+('lblDoneTask', 'Valmiit tehtävät', 'fi'),
+-- sign out
+('btnSignOut', 'Kirjaudu ulos', 'fi'),
+-- sign out confirmation and success message
+('confirm.title', 'Vahvistus', 'fi'),
+('confirm.signOut', 'Oletko varma, että haluat kirjautua ulos?', 'fi'),
+('success.signOut', 'Olet kirjautunut ulos.', 'fi');
 
 -- chinese (simplified)
 INSERT INTO translations (translation_key, translation_value, language) VALUES
@@ -204,6 +217,7 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('itemEnglish', '英语', 'zh'),
 ('itemChinese', '中文', 'zh'),
 ('itemPersian', '波斯语', 'zh'),
+-- login errors and messages
 ('error.loginMessage', '用户名和密码不能为空', 'zh'),
 ('success.loginMessage', '登录成功！欢迎', 'zh'),
 ('invalid.message', '用户名或密码无效', 'zh'),
@@ -214,7 +228,7 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('lblConfirm', '确认:', 'zh'),
 ('btnCreateAccount', '创建账户', 'zh'),
 ('btnBackToLogin', '返回登录', 'zh'),
-
+-- signup errors and messages
 ('error.title', '错误', 'zh'),
 ('error.fillAll', '请填写所有字段！', 'zh'),
 ('error.usernameExists', '用户名已存在！', 'zh'),
@@ -234,6 +248,7 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('descColumn', '描述', 'zh'),
 ('dueDateColumn', '截止日期', 'zh'),
 ('statusColumn', '状态', 'zh'),
+-- taskList errors and messages
 ('error.noTaskMessage', '未选择任务', 'zh'),
 ('error.editTaskMessage', '请选择要编辑的任务', 'zh'),
 ('error.deleteMessage', '请选择要删除的任务', 'zh'),
@@ -251,24 +266,29 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('lblStatus', '状态:', 'zh'),
 ('btnCancel', '取消', 'zh'),
 ('btnSave', '保存', 'zh'),
+-- No translate ERROR messages here yet
+
 -- calendar
 ('lblCalendarView', '7天日历视图', 'zh'),
 ('btnBackToTaskList', '返回任务列表', 'zh'),
-
 ('prompt.title', '任务标题', 'zh'),
 ('prompt.description', '任务描述', 'zh'),
-
 ('status.TODO', '待办', 'zh'),
 ('status.IN_PROGRESS', '进行中', 'zh'),
 ('status.DONE', '已完成', 'zh'),
-
+-- calendar errors and messages
 ('error.validation', '标题、截止日期和状态是必填字段。', 'zh'),
 ('success.updated', '任务已成功更新！', 'zh'),
-
 ('window.taskList.title', '任务', 'zh'),
 -- done task
 ('backToList', '返回任务', 'zh'),
-('lblDoneTask', '已完成任务', 'zh');
+('lblDoneTask', '已完成任务', 'zh'),
+-- sign out
+('btnSignOut','退出','zh'),
+-- sign out confirmation and success message
+('confirm.title','确认','zh'),
+('confirm.signOut','您确定要退出吗？','zh'),
+('success.signOut','您已成功退出。','zh');
 
 -- persian
 INSERT INTO translations (translation_key, translation_value, language) VALUES
@@ -282,6 +302,7 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('itemEnglish', 'انگلیسی', 'fa'),
 ('itemChinese', 'چینی', 'fa'),
 ('itemPersian', 'فارسی', 'fa'),
+-- login errors and messages
 ('error.loginMessage', 'نام کاربری و رمز عبور نمی‌تواند خالی باشد', 'fa'),
 ('success.loginMessage', 'ورود موفقیت‌آمیز! خوش آمدید', 'fa'),
 ('invalid.message', 'نام کاربری یا رمز عبور نامعتبر است', 'fa'),
@@ -292,7 +313,7 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('lblConfirm', 'تأیید:', 'fa'),
 ('btnCreateAccount', 'ایجاد حساب', 'fa'),
 ('btnBackToLogin', 'بازگشت به ورود', 'fa'),
-
+-- signup errors and messages
 ('error.title', 'خطا', 'fa'),
 ('error.fillAll', 'لطفاً همه فیلدها را پر کنید!', 'fa'),
 ('error.usernameExists', 'نام کاربری از قبل وجود دارد!', 'fa'),
@@ -302,7 +323,7 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('lblHeaderMyTasks', 'وظایف من', 'fa'),
 ('btnEnterTask', 'افزودن وظیفه', 'fa'),
 ('btnTaskLists', 'لیست وظایف', 'fa'),
-
+-- tasklist
 ('btnAddTask', 'افزودن وظیفه', 'fa'),
 ('btnDeleteTask', 'حذف وظیفه', 'fa'),
 ('btnEditTask', 'ویرایش وظیفه', 'fa'),
@@ -312,6 +333,7 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('descColumn', 'توضیحات', 'fa'),
 ('dueDateColumn', 'تاریخ سررسید', 'fa'),
 ('statusColumn', 'وضعیت', 'fa'),
+-- taskList errors and messages
 ('error.noTaskMessage', 'هیچ وظیفه‌ای انتخاب نشده است', 'fa'),
 ('error.editTaskMessage', 'لطفاً یک وظیفه برای ویرایش انتخاب کنید', 'fa'),
 ('error.deleteMessage', 'لطفاً یک وظیفه برای حذف انتخاب کنید', 'fa'),
@@ -320,7 +342,7 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('success.taskEditMessage', 'وظیفه با موفقیت به‌روزرسانی شد!', 'fa'),
 ('success.title', 'موفقیت', 'fa'),
 ('lblAddTask', 'افزودن وظیفه جدید', 'fa'),
-
+-- edit task
 ('lblEditTask', 'ویرایش وظیفه', 'fa'),
 ('lblTitle', 'عنوان:', 'fa'),
 ('lblDescription', 'توضیحات:', 'fa'),
@@ -328,25 +350,27 @@ INSERT INTO translations (translation_key, translation_value, language) VALUES
 ('lblStatus', 'وضعیت:', 'fa'),
 ('btnCancel', 'لغو', 'fa'),
 ('btnSave', 'ذخیره', 'fa'),
+-- No translate ERROR messages here yet
 
+-- calendar
 ('lblCalendarView', 'نمای ۷ روزه تقویم', 'fa'),
 ('btnBackToTaskList', 'بازگشت به لیست وظایف', 'fa'),
-
 ('prompt.title', 'عنوان وظیفه', 'fa'),
 ('prompt.description', 'توضیحات وظیفه', 'fa'),
-
 ('status.TODO', 'برای انجام', 'fa'),
 ('status.IN_PROGRESS', 'در حال انجام', 'fa'),
 ('status.DONE', 'انجام‌شده', 'fa'),
-
+-- calendar errors and messages
 ('error.validation', 'عنوان، تاریخ سررسید و وضعیت الزامی هستند.', 'fa'),
 ('success.updated', 'وظیفه با موفقیت به‌روزرسانی شد!', 'fa'),
-
 ('window.taskList.title', 'وظایف', 'fa'),
-
 ('backToList', 'بازگشت به وظایف', 'fa'),
-('lblDoneTask', 'وظایف انجام‌شده', 'fa');
+('lblDoneTask', 'وظایف انجام‌شده', 'fa'),
+-- sign out
+('btnSignOut','خروج','fa'),
+-- sign out confirmation and success message
+('confirm.title','تأیید','fa'),
+('confirm.signOut','آیا از خروج خود اطمینان دارید؟','fa'),
+('success.signOut','خروج با موفقیت انجام شد.','fa');
 
-
-
-
+-- End of StudyPlanner database initialization
