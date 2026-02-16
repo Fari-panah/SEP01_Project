@@ -22,11 +22,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn clean package -DskipTests'
+                //bat 'mvn clean package -DskipTests'
+                bat 'mvn clean package'
+
             }
         }
 
-        stage('Unit Tests (model only)') {
+        stage('Unit Tests') {
             steps {
                 bat 'mvn test -Dtest=model.* -Dsurefire.failIfNoSpecifiedTests=false'
             }

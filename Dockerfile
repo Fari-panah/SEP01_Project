@@ -8,16 +8,24 @@ RUN apt-get update && apt-get install -y \
 
 # Download and unzip JavaFX Linux SDK
 RUN mkdir -p /javafx-sdk \
-    && wget -O javafx.zip https://download2.gluonhq.com/openjfx/21.0.2/openjfx-21.0.2_linux-x64_bin-sdk.zip \
+    && wget -O javafx.zip https://download2.gluonhq.com/openjfx/17.0.14/openjfx-17.0.14_linux-x64_bin-sdk.zip
+ \
+
+
     && unzip javafx.zip -d /javafx-sdk \
     && mv /javafx-sdk/javafx-sdk-21.0.2/lib /javafx-sdk/lib \
     && rm -rf /javafx-sdk/javafx-sdk-21.0.2 javafx.zip
 
 # Copy your fat JAR
-COPY target/*.jar app.jar
+COPY target/studyplanner.jar app.jar
 
 ENV DISPLAY=host.docker.internal:0.0
 ENV DB_HOST=host.docker.internal
 # Run JavaFX app
-CMD ["java", "--module-path", "/javafx-sdk/lib", "--add-modules", "javafx.controls,javafx.fxml", "-jar", "app.jar"]
+CMD ["java",
+     "-Dprism.order=sw",
+     "-Dprism.verbose=true",
+     "--module-path", "/javafx-sdk/lib",
+     "--add-modules", "javafx.controls,javafx.fxml",
+     "-jar", "app.jar"]
 
