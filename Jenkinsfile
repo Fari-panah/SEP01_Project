@@ -24,7 +24,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-               // git branch: 'main', url: 'https://github.com/Miro193/SEP01_Project.git'
+
                git branch: 'main', url: 'https://github.com/Fari-panah/SEP01_Project.git'
             }
         }
@@ -105,7 +105,8 @@ pipeline {
 
         stage('Publish Coverage Report') {
             steps {
-                jacoco (path: 'target/jacoco.exec')
+                jacoco execPattern: 'target/jacoco.exec'
+
             }
         }
 
@@ -147,7 +148,7 @@ pipeline {
     post {
         always {
             junit(testResults: '**/target/surefire-reports/*.xml', allowEmptyResults: true)
-            jacoco(path: '**/target/jacoco.exec')
+            jacoco execPattern: '**/target/jacoco.exec'
         }
     }
 }
